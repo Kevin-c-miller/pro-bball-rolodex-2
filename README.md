@@ -8,3 +8,4 @@
 
 - axios
 - react-router-dom
+- tailwind cdd
