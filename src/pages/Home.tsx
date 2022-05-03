@@ -3,17 +3,22 @@ import PlayerImage from '../components/PlayerImage';
 import PlayerInfo from '../components/PlayerInfo';
 import PlayerStats from '../components/PlayerStats';
 import Search from '../components/Search';
-import { getPlayerInfo } from '../services/apiConfig';
-import { PlayerInformation } from '../playerInfo.model';
+import { getPlayerInfo, getPlayerStats } from '../services/apiConfig';
+import { PlayerInformation, Statistics } from '../models/player.model';
 
 const Home = () => {
   const [searched, setSearched] = useState('');
   const [player, setPlayer] = useState<PlayerInformation[]>([]);
+  const [stats, setStats] = useState<Statistics[]>([]);
 
   const fetchPlayer = async (searched: string) => {
     const searchedPlayer = await getPlayerInfo(searched);
+    const playerStatistics = await getPlayerStats(searchedPlayer[0].id);
     console.log(searchedPlayer);
+    console.log(playerStatistics);
+
     setPlayer(searchedPlayer);
+    setStats(playerStatistics);
   };
 
   //   change on form
@@ -37,9 +42,9 @@ const Home = () => {
       />
       <div className="flex justify-center items-center">
         <PlayerImage />
-        <div>
+        <div className="flex justify-center items-center mx-4">
           <PlayerInfo player={player} />
-          <PlayerStats />
+          <PlayerStats stats={stats} />
         </div>
       </div>
     </div>
