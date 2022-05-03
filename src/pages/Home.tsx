@@ -13,6 +13,7 @@ const Home = () => {
   const [toggle, setToggle] = useState(false);
   const [playerImage, setPlayerImage] = useState('');
 
+  //   get player info
   const fetchPlayer = async (searched: string) => {
     const searchedPlayer = await getPlayerInfo(searched);
     const playerStatistics = await getPlayerStats(searchedPlayer[0].id);
@@ -24,7 +25,7 @@ const Home = () => {
 
   //  get player headshots
   const getPlayerImage = (searched: string) => {
-    //reverse search input for headshot API call
+    //reverse the search input for headshot correct url structure
     const reverseName = searched.split(' ');
     [reverseName[0], reverseName[1]] = [reverseName[1], reverseName[0]];
     const lastName = reverseName[0];
@@ -38,7 +39,7 @@ const Home = () => {
     }
   };
 
-  //   change on form
+  //  onchange for search
   const handleChange = (e: React.FormEvent<HTMLInputElement>): void => {
     setSearched(e.currentTarget.value);
   };
