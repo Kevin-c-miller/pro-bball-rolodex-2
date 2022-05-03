@@ -16,23 +16,27 @@ interface PlayerInfoProps {
 
 const PlayerInfo = ({ player }: PlayerInfoProps) => {
   return (
-    <div className="flex flex-col py-2">
+    <div className="flex flex-col py-2 mx-4">
       {player.map((player) => (
         <div className="p-2 m-2" key={player?.id}>
-          <h2>
+          <h2 className="text-3xl font-bold">
             {player?.first_name} {player?.last_name}
           </h2>
-          <h3>{player?.team?.full_name}</h3>
+          <h3 className="text-xl font-bold">{player?.team?.full_name}</h3>
           <h4>
             <strong>Position:</strong> {player?.position}
           </h4>
           <h4>
-            <strong>Height:</strong> {player?.height_feet}ft.{' '}
-            {player?.height_inches}in.
+            <strong>Height:</strong>{' '}
+            {player?.height_feet !== null
+              ? `${player?.height_feet}ft. ${player?.height_inches}in.`
+              : `Not Available`}
           </h4>
           <h4>
-            <strong>Weight: </strong>
-            {player?.weight_pounds}lbs.
+            <strong>Weight: </strong>{' '}
+            {player?.weight_pounds !== null
+              ? `${player?.weight_pounds}lbs.`
+              : 'Not Available'}
           </h4>
         </div>
       ))}
