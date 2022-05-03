@@ -25,7 +25,7 @@ const PlayerStats = ({ stats }: StatsProps) => {
     <div className="mx-4">
       <h5>Stats</h5>
       {stats.map((stats) => (
-        <div>
+        <div key={stats?.player_id}>
           <h5>
             <strong>Season:</strong> {stats?.season}
           </h5>

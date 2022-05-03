@@ -27,12 +27,16 @@ const PlayerInfo = ({ player }: PlayerInfoProps) => {
             <strong>Position:</strong> {player?.position}
           </h4>
           <h4>
-            <strong>Height:</strong> {player?.height_feet}ft.{' '}
-            {player?.height_inches}in.
+            <strong>Height:</strong>{' '}
+            {player?.height_feet !== null
+              ? `${player?.height_feet}ft. ${player?.height_inches}in.`
+              : `Not Available`}
           </h4>
           <h4>
-            <strong>Weight: </strong>
-            {player?.weight_pounds}lbs.
+            <strong>Weight: </strong>{' '}
+            {player?.weight_pounds !== null
+              ? `${player?.weight_pounds}lbs.`
+              : 'Not Available'}
           </h4>
         </div>
       ))}

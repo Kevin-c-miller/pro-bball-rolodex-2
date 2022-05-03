@@ -24,23 +24,6 @@ export const getPlayerStats = async (searchInput: string) => {
   }
 };
 
-//  get player headshots
-export const getPlayerHeadshots = async (searchInput: string) => {
-  //reverse search input for headshot API call
-  const reverseName = searchInput.split(' ');
-  [reverseName[0], reverseName[1]] = [reverseName[1], reverseName[0]];
-  const lastName = reverseName[0];
-  const firstName = reverseName[1];
-
-  try {
-    const url = `https://nba-players.herokuapp.com/players/${lastName}/${firstName}`;
-    const res = await axios.get(url);
-    return res.data;
-  } catch (error) {
-    console.error(error);
-  }
-};
-
 // get team info
 export const getTeam = async (team: string) => {
   try {

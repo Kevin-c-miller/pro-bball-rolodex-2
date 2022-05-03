@@ -10,15 +10,32 @@ const Home = () => {
   const [searched, setSearched] = useState('');
   const [player, setPlayer] = useState<PlayerInformation[]>([]);
   const [stats, setStats] = useState<Statistics[]>([]);
+  const [toggle, setToggle] = useState(false);
+  const [playerImage, setPlayerImage] = useState('');
 
   const fetchPlayer = async (searched: string) => {
     const searchedPlayer = await getPlayerInfo(searched);
     const playerStatistics = await getPlayerStats(searchedPlayer[0].id);
-    console.log(searchedPlayer);
-    console.log(playerStatistics);
 
     setPlayer(searchedPlayer);
     setStats(playerStatistics);
+    setToggle(true);
+  };
+
+  //  get player headshots
+  const getPlayerImage = (searched: string) => {
+    //reverse search input for headshot API call
+    const reverseName = searched.split(' ');
+    [reverseName[0], reverseName[1]] = [reverseName[1], reverseName[0]];
+    const lastName = reverseName[0];
+    const firstName = reverseName[1];
+    try {
+      const imageUrl = `https://nba-players.herokuapp.com/players/${lastName}/${firstName}`;
+
+      setPlayerImage(imageUrl);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   //   change on form
@@ -30,7 +47,12 @@ const Home = () => {
   const handleSearch = (e: React.SyntheticEvent) => {
     e.preventDefault();
     fetchPlayer(searched);
+    getPlayerImage(searched);
+    setSearched('');
   };
+
+  console.log(player);
+  console.log(stats);
 
   return (
     <div className="flex flex-col justify-center items-center p-5">
@@ -40,13 +62,15 @@ const Home = () => {
         handleSearch={handleSearch}
         handleChange={handleChange}
       />
-      <div className="flex justify-center items-center">
-        <PlayerImage />
-        <div className="flex justify-center items-center mx-4">
-          <PlayerInfo player={player} />
-          <PlayerStats stats={stats} />
+      {toggle && (
+        <div className="flex justify-center items-center">
+          <PlayerImage playerImage={playerImage} />
+          <div className="flex justify-center items-center mx-4">
+            <PlayerInfo player={player} />
+            <PlayerStats stats={stats} />
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };
