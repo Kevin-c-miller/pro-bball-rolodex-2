@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import axios from 'axios';
 import PlayerImage from '../components/PlayerImage';
 import PlayerInfo from '../components/PlayerInfo';
 import PlayerStats from '../components/PlayerStats';
@@ -6,6 +7,7 @@ import Search from '../components/Search';
 import Landing from '../components/Landing';
 import { getPlayerInfo, getPlayerStats } from '../services/apiConfig';
 import { PlayerInformation, Statistics } from '../models/player.model';
+import { noImage } from '../assets/index';
 
 const Home = () => {
   const [searched, setSearched] = useState('');
@@ -25,7 +27,7 @@ const Home = () => {
   };
 
   //  get player headshots
-  const getPlayerImage = (searched: string) => {
+  const getPlayerImage = async (searched: string) => {
     //reverse the search input for headshot correct url structure
     const reverseName = searched.split(' ');
     [reverseName[0], reverseName[1]] = [reverseName[1], reverseName[0]];
@@ -34,7 +36,12 @@ const Home = () => {
     try {
       const imageUrl = `https://nba-players.herokuapp.com/players/${lastName}/${firstName}`;
 
-      setPlayerImage(imageUrl);
+      const resp = await axios.get(imageUrl);
+
+      resp.data ===
+      'Sorry, that player was not found. Please check the spelling.'
+        ? setPlayerImage(noImage)
+        : setPlayerImage(imageUrl);
     } catch (error) {
       console.error(error);
     }
