@@ -5,6 +5,7 @@ import PlayerStats from '../components/PlayerStats';
 import Search from '../components/Search';
 import { getPlayerInfo, getPlayerStats } from '../services/apiConfig';
 import { PlayerInformation, Statistics } from '../models/player.model';
+import Landing from '../components/Landing';
 
 const Home = () => {
   const [searched, setSearched] = useState('');
@@ -39,7 +40,7 @@ const Home = () => {
     }
   };
 
-  //  onchange for search
+  //  onchange for search bar
   const handleChange = (e: React.FormEvent<HTMLInputElement>): void => {
     setSearched(e.currentTarget.value);
   };
@@ -57,6 +58,7 @@ const Home = () => {
 
   return (
     <div className="flex flex-col justify-center items-center p-5">
+      <Landing />
       <h2>Search NBA Players</h2>
       <Search
         searched={searched}
