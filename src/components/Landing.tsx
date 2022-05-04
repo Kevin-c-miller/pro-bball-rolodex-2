@@ -17,8 +17,12 @@ const Landing = () => {
       </div>
 
       <div className="flex justify-center items-center p-4 m-4">
-        <button className="p-3 m-3">Search Players</button>
-        <button className="p-3 m-3">Search Teams</button>
+        <button className="p-3 m-3 border-white border-b-2 hover:border-orange-300 hover:rounded">
+          Search Players
+        </button>
+        <button className="p-3 m-3 border-white border-b-2 hover:border-orange-300 hover:rounded">
+          Search Teams
+        </button>
       </div>
     </div>
   );
