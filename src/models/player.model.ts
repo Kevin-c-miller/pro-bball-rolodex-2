@@ -9,6 +9,10 @@ export interface PlayerInformation {
   team: {
     full_name: string;
     id: number;
+    abbreviation: string;
+    conference: string;
+    division: string;
+    city: string;
   };
 }
 
