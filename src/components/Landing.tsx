@@ -2,10 +2,10 @@ import { bball } from '../assets/index';
 
 const Landing = () => {
   return (
-    <div className="min-h-screen font-bold text-4xl">
+    <div className="flex flex-col items-center justify-center min-h-screen mb-7">
       <div className="flex flex-col justify-center items-center ">
         <div className="m-5 p-5">
-          <h1>Pro Basketball Rolodex</h1>
+          <h1 className="font-bold text-4xl">Pro Basketball Rolodex</h1>
         </div>
         <div className=" m-5 p-5">
           <img
@@ -19,9 +19,6 @@ const Landing = () => {
       <div className="flex justify-center items-center p-4 m-4">
         <button className="p-3 m-3 border-white border-b-2 hover:border-orange-300 hover:rounded">
           Search Players
-        </button>
-        <button className="p-3 m-3 border-white border-b-2 hover:border-orange-300 hover:rounded">
-          Search Teams
         </button>
       </div>
     </div>

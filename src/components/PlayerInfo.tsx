@@ -1,3 +1,5 @@
+import TeamLogo from './TeamLogo';
+
 interface PlayerInfoProps {
   player: {
     first_name: string;
@@ -10,13 +12,17 @@ interface PlayerInfoProps {
     team: {
       full_name: string;
       id: number;
+      abbreviation: string;
+      conference: string;
+      division: string;
+      city: string;
     };
   }[];
 }
 
 const PlayerInfo = ({ player }: PlayerInfoProps) => {
   return (
-    <div className="flex flex-col py-2 mx-4">
+    <div className="flex flex-col py-2 mx-4 h-[100%]">
       {player.map((player) => (
         <div className="p-2 m-2" key={player?.id}>
           <h2 className="text-3xl font-bold">
@@ -40,6 +46,8 @@ const PlayerInfo = ({ player }: PlayerInfoProps) => {
           </h4>
         </div>
       ))}
+
+      <TeamLogo player={player} />
     </div>
   );
 };
