@@ -9,7 +9,7 @@ const PlayerImage = ({ playerImage }: ImageProps) => {
         <img
           src={playerImage}
           alt="player headshot"
-          className="h-[300px] w-[400px] border-2 border-white rounded-[50%]"
+          className="h-[300px] w-[400px] border-2 border-white rounded-xl"
         />
       )}
     </div>
