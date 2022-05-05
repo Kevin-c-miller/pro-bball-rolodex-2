@@ -8,22 +8,28 @@ import Landing from '../components/Landing';
 import { getPlayerInfo, getPlayerStats } from '../services/apiConfig';
 import { PlayerInformation, Statistics } from '../models/player.model';
 import { noImage } from '../assets/index';
+import Error from '../components/Error';
 
 const Home = () => {
   const [searched, setSearched] = useState('');
   const [player, setPlayer] = useState<PlayerInformation[]>([]);
   const [stats, setStats] = useState<Statistics[]>([]);
-  const [toggle, setToggle] = useState(false);
   const [playerImage, setPlayerImage] = useState('');
+  const [toggle, setToggle] = useState(false);
+  const [searchError, setSearchError] = useState(false);
 
   //   get player info
   const fetchPlayer = async (searched: string) => {
-    const searchedPlayer = await getPlayerInfo(searched);
-    const playerStatistics = await getPlayerStats(searchedPlayer[0].id);
-
-    setPlayer(searchedPlayer);
-    setStats(playerStatistics);
-    setToggle(true);
+    try {
+      const searchedPlayer = await getPlayerInfo(searched);
+      const playerStatistics = await getPlayerStats(searchedPlayer[0].id);
+      setPlayer(searchedPlayer);
+      setStats(playerStatistics);
+      setToggle(true);
+    } catch (err) {
+      setToggle(true);
+      setSearchError(true);
+    }
   };
 
   //  get player headshots
@@ -36,9 +42,9 @@ const Home = () => {
     try {
       const imageUrl = `https://nba-players.herokuapp.com/players/${lastName}/${firstName}`;
 
-      const resp = await axios.get(imageUrl);
+      const res = await axios.get(imageUrl);
 
-      resp.data ===
+      res.data ===
       'Sorry, that player was not found. Please check the spelling.'
         ? setPlayerImage(noImage)
         : setPlayerImage(imageUrl);
@@ -55,13 +61,12 @@ const Home = () => {
   // search results
   const handleSearch = (e: React.SyntheticEvent) => {
     e.preventDefault();
+
     fetchPlayer(searched);
     getPlayerImage(searched);
+
     setSearched('');
   };
-
-  console.log(player);
-  console.log(stats);
 
   return (
     <div className="flex flex-col justify-center items-center p-5">
@@ -73,20 +78,26 @@ const Home = () => {
           handleChange={handleChange}
         />
         {toggle && (
-          <div className="flex justify-center items-center">
-            <div className="flex justify-center items-center">
-              <PlayerImage playerImage={playerImage} />
-            </div>
-            <div className="flex justify-center items-center mx-4">
-              <PlayerInfo player={player} />
-            </div>
+          <>
+            {searchError ? (
+              <Error />
+            ) : (
+              <div className="flex justify-center items-center">
+                <div className="flex justify-center items-center">
+                  <PlayerImage playerImage={playerImage} />
+                </div>
+                <div className="flex justify-center items-center mx-4">
+                  <PlayerInfo player={player} />
+                </div>
 
-            {stats.length > 0 && (
-              <div className="flex justify-center items-center p-5">
-                <PlayerStats stats={stats} />
+                {stats.length > 0 && (
+                  <div className="flex justify-center items-center p-5">
+                    <PlayerStats stats={stats} />
+                  </div>
+                )}
               </div>
             )}
-          </div>
+          </>
         )}
       </div>
     </div>

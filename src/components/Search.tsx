@@ -20,10 +20,11 @@ const Search = ({
       >
         <input
           type="text"
-          placeholder="Enter Player Name...."
+          placeholder="Enter Player Name"
           className="border-2 border-solid border-[#fed7a7] rounded-lg p-2 m-4"
           onChange={handleChange}
           value={searched}
+          required
         />
         <button
           type="submit"
