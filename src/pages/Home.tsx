@@ -82,16 +82,16 @@ const Home = () => {
             {searchError ? (
               <Error />
             ) : (
-              <div className="flex justify-center items-center">
-                <div className="flex justify-center items-center">
+              <div className="flex flex-col justify-center items-start md:flex-row">
+                <div className="flex justify-center items-center md:flex-row">
                   <PlayerImage playerImage={playerImage} player={player} />
                 </div>
-                <div className="flex justify-center items-center mx-4">
+                <div className="flex flex-col justify-center items-start mx-4 md:flex-row">
                   <PlayerInfo player={player} />
                 </div>
 
                 {stats.length > 0 && (
-                  <div className="flex justify-center items-center p-5">
+                  <div className="flex flex-col justify-center items-start mx-4 md:flex-row">
                     <PlayerStats stats={stats} />
                   </div>
                 )}
