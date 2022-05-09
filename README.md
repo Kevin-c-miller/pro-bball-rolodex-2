@@ -14,7 +14,7 @@
 ## API data
 - balldontlie.io API for player stats/player info
 - player images from https://nba-players.herokuapp.com
-- team logos from http://i.cdn.turner.com/nba/nba/.element/img/1.0/teamsites/logos/teamlogos_500x500/
+- team logos from http://i.cdn.turner.com/nba/nba/.element/img/1.0/teamsites/logos/teamlogos_500x500/bos.png
 
 ## WireFrame
 - Landing Page
