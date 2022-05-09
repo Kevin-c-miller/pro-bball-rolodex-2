@@ -14,8 +14,8 @@ interface LogoProps {
 
 const TeamLogo = ({ player }: LogoProps) => {
   return (
-    <div className="flex flex-col items-center justify-start py-2 mx-4">
-      <h4 className="font-bold underline">Team Info</h4>
+    <div className="flex flex-col items-start justify-start py-2 mx-4">
+      <h4 className="font-bold underline text-xl">Team Info</h4>
       {player.map((player) => (
         <div key={player?.team?.id} className="flex justify-start items-center">
           <div className="flex flex-col items-start justify-center">
@@ -29,13 +29,6 @@ const TeamLogo = ({ player }: LogoProps) => {
               <strong>Conference: </strong> {player?.team?.conference}
             </h4>
           </div>
-          {/* <div className="flex items-center justify-center">
-            <img
-              src={`${logoUrl}${player?.team?.abbreviation.toLowerCase()}.png`}
-              alt="team logo"
-              className="h-[100px] w-[100px]"
-            />
-          </div> */}
         </div>
       ))}
     </div>

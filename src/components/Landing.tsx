@@ -5,7 +5,9 @@ const Landing = () => {
     <div className="flex flex-col items-center justify-center m-7">
       <div className="flex flex-col justify-center items-center ">
         <div className="m-5 p-5">
-          <h1 className="font-bold text-4xl">Pro Basketball Rolodex</h1>
+          <h1 className="font-bold text-2xl md:text-4xl">
+            Pro Basketball Rolodex
+          </h1>
         </div>
         <div className=" m-5 p-5">
           <img

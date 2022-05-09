@@ -22,10 +22,10 @@ interface StatsProps {
 
 const PlayerStats = ({ stats }: StatsProps) => {
   return (
-    <div className="mx-4">
-      <h4 className="font-bold underline py-2">Stats</h4>
+    <>
+      <h4 className="font-bold px-5 underline py-2 mx-2 text-xl">Stats</h4>
       {stats.map((stats) => (
-        <div key={stats?.player_id}>
+        <div key={stats?.player_id} className="leading-6 p-2 mx-5">
           <h5>
             <strong>Season:</strong> {stats?.season}
           </h5>
@@ -85,7 +85,7 @@ const PlayerStats = ({ stats }: StatsProps) => {
           </ul>
         </div>
       ))}
-    </div>
+    </>
   );
 };
 

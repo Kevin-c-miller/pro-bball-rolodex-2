@@ -24,8 +24,8 @@ const PlayerInfo = ({ player }: PlayerInfoProps) => {
   return (
     <div className="flex flex-col py-2 mx-4 h-[100%]">
       {player.map((player) => (
-        <div className="p-2 m-2" key={player?.id}>
-          <h2 className="text-3xl font-bold">
+        <div className="p-2 m-2 leading-6" key={player?.id}>
+          <h2 className="text-3xl font-bold md:text-4xl">
             {player?.first_name} {player?.last_name}
           </h2>
           <h3 className="text-xl font-bold">{player?.team?.full_name}</h3>
