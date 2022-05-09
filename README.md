@@ -1,7 +1,8 @@
 # Pro-bball-rolodex v2
 
-- Remake of my first project, pro-basketball-rolodex, which was built using
+- Remake of a different project, pro-basketball-rolodex, which was built using
   vanilla (HTML,CSS,JS)
+  - https://github.com/Kevin-c-miller/pro-basketball-rolodex
 - This new project is built using React and TypeScript
 
 ## Libraries & Dependencies

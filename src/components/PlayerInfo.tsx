@@ -35,7 +35,7 @@ const PlayerInfo = ({ player }: PlayerInfoProps) => {
           <h4>
             <strong>Height:</strong>{' '}
             {player?.height_feet !== null
-              ? `${player?.height_feet}ft. ${player?.height_inches}in.`
+              ? `${player?.height_feet}'${player?.height_inches}"`
               : `Not Available`}
           </h4>
           <h4>
