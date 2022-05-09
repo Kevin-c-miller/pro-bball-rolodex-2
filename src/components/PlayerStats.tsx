@@ -71,11 +71,11 @@ const PlayerStats = ({ stats }: StatsProps) => {
             </li>
             <li>
               <strong>FT%: </strong>
-              {convertToPrecent(stats?.ft_pct)}%
+              {convertToPrecent(stats?.ft_pct).toFixed(2)}%
             </li>
             <li>
               <strong>3pt%: </strong>
-              {convertToPrecent(stats?.fg3_pct)}%
+              {convertToPrecent(stats?.fg3_pct).toFixed(2)}%
             </li>
             <li>
               <strong>FGM: </strong>
@@ -87,7 +87,7 @@ const PlayerStats = ({ stats }: StatsProps) => {
             </li>
             <li>
               <strong>FG%: </strong>
-              {convertToPrecent(stats?.fg_pct)}%
+              {convertToPrecent(stats?.fg_pct).toFixed(2)}%
             </li>
           </ul>
         </div>
