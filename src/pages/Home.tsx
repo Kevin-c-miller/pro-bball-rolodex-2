@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import PlayerImage from '../components/PlayerImage';
 import PlayerInfo from '../components/PlayerInfo';
@@ -23,9 +23,16 @@ const Home = () => {
     try {
       const searchedPlayer = await getPlayerInfo(searched);
       const playerStatistics = await getPlayerStats(searchedPlayer[0].id);
-      setPlayer(searchedPlayer);
-      setStats(playerStatistics);
-      setToggle(true);
+
+      // checking for more than one returned player and asking for a narrower search if so
+      if (searchedPlayer.length !== 1) {
+        setSearchError(true);
+        player.length > 0 && setPlayer([]);
+      } else {
+        setPlayer(searchedPlayer);
+        setStats(playerStatistics);
+        setToggle(true);
+      }
     } catch (err) {
       setToggle(true);
       setSearchError(true);
@@ -56,17 +63,26 @@ const Home = () => {
   //  onchange for search bar
   const handleChange = (e: React.FormEvent<HTMLInputElement>): void => {
     setSearched(e.currentTarget.value);
+    setSearchError(false);
+    setToggle(false);
   };
 
   // search results
   const handleSearch = (e: React.SyntheticEvent) => {
     e.preventDefault();
-
-    fetchPlayer(searched);
-    getPlayerImage(searched);
+    if (!searchError) {
+      fetchPlayer(searched);
+      getPlayerImage(searched);
+      setToggle(true);
+    }
 
     setSearched('');
   };
+
+  console.log(searched, player);
+  console.log(searchError);
+
+  useEffect(() => {}, [searched, searchError]);
 
   return (
     <div className="flex flex-col justify-center items-center p-5">
