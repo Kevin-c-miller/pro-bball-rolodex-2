@@ -84,7 +84,7 @@ const Home = () => {
             ) : (
               <div className="flex justify-center items-center">
                 <div className="flex justify-center items-center">
-                  <PlayerImage playerImage={playerImage} />
+                  <PlayerImage playerImage={playerImage} player={player} />
                 </div>
                 <div className="flex justify-center items-center mx-4">
                   <PlayerInfo player={player} />
