@@ -16,13 +16,13 @@ const PlayerImage = ({ playerImage, player }: ImageProps) => {
         <div key={searched?.id} className="h-[100%] w-[100%] relative my-4">
           <img
             src={`${logoUrl}${searched?.team?.abbreviation.toLowerCase()}.png`}
-            alt="player headshot"
+            alt={`${searched?.team?.abbreviation} team logo`}
             className="h-[100%] w-[100%]"
           />
           <img
             src={playerImage}
-            alt={`${searched?.team?.abbreviation} team logo`}
-            className="absolute bottom-0.5 left-[3.0rem] rounded-[50%] opacity-95 h-[50%] w-[70%] border-2"
+            alt="player headshot"
+            className="absolute bottom-0.5 left-[3rem] rounded-[50%] opacity-95 h-[50%] w-[70%] border-2 md:left-[4.3rem]"
           />
         </div>
       ))}

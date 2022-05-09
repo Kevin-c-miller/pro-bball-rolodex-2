@@ -83,7 +83,7 @@ const Home = () => {
               <Error />
             ) : (
               <div className="flex flex-col justify-center items-start md:flex-row">
-                <div className="flex justify-center items-center md:flex-row">
+                <div className="flex justify-start items-start md:flex-row">
                   <PlayerImage playerImage={playerImage} player={player} />
                 </div>
                 <div className="flex flex-col justify-center items-start mx-4 md:flex-row">
@@ -91,7 +91,7 @@ const Home = () => {
                 </div>
 
                 {stats.length > 0 && (
-                  <div className="flex flex-col justify-center items-start mx-4 md:flex-row">
+                  <div className="flex flex-col justify-center items-start m-4">
                     <PlayerStats stats={stats} />
                   </div>
                 )}

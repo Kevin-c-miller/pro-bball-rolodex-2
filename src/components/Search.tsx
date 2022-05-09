@@ -12,7 +12,7 @@ const Search = ({
   handleChange = () => {},
 }: SearchProps) => {
   return (
-    <div className="mt-7">
+    <div className="m-7">
       <form
         onSubmit={handleSearch}
         className="flex flex-col justify-center items-center m-4"

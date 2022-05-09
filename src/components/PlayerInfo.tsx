@@ -22,7 +22,7 @@ interface PlayerInfoProps {
 
 const PlayerInfo = ({ player }: PlayerInfoProps) => {
   return (
-    <div className="flex flex-col py-2 mx-4 h-[100%]">
+    <div className="flex flex-col py-2 mx-4 h-[100%] md:py-14">
       {player.map((player) => (
         <div className="p-2 m-2 leading-6" key={player?.id}>
           <h2 className="text-3xl font-bold md:text-4xl">
