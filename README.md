@@ -1,4 +1,5 @@
 # Pro-bball-rolodex v2
+- Search NBA players and find stats/info about them
 
 - Remake of a different project, pro-basketball-rolodex, which was built using
   vanilla (HTML,CSS,JS)
