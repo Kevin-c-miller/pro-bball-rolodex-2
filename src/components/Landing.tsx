@@ -13,7 +13,7 @@ const Landing = () => {
           <img
             src={bball}
             alt="bball hoop"
-            className="h-[200px] w-[200px] bg-transparent opacity-[0.7]  "
+            className="h-[200px] w-[200px] bg-transparent opacity-[0.7] drop-shadow-[2px_4px_8px_#585858]"
           />
         </div>
       </div>
