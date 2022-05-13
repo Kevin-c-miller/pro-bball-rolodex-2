@@ -79,9 +79,6 @@ const Home = () => {
     setSearched('');
   };
 
-  console.log(searched, player);
-  console.log(searchError);
-
   useEffect(() => {}, [searched, searchError]);
 
   return (
